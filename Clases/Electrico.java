@@ -8,21 +8,11 @@ public class Electrico extends Pokemon{
 	}
 
 	@Override
-	public void subirNivel() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void habilidadEspecial() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public String informacion() {
-		// TODO Auto-generated method stub
-		return null;
+		return "Electrico [Nombre: " + getNombre() + ", Categoria: " + getCategoria() + ", Hp: " + getHp()
+		+ ", Nivel:" + getNivel() + ", Exp:" + getExp() + ", Ataque: " + getAtaque()
+		+ ", Defensa:" + getDefensa() + ", Altura:" + getAltura() + ", Peso:" + getPeso()
+		+ ", Habilidad:" + getHabilidad() + "]";
 	}
 
 }

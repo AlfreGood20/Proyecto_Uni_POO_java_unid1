@@ -9,58 +9,67 @@ public class Pokedex {
 	}
 
 	public void mostrarPokedex() {
-		if(!llenoPokemon()) {
-			System.out.print("No hay pokemones agregados!!\n");
-			return;
-		}
-		else {
-			for (Object pokemones : pokedex) {
-				Pokemon pokemon = (Pokemon) pokemones;
-				pokemon.informacion();
-			}
-		}
-	}
+        boolean hayPokemones = false;
+
+        for (Object pokemones : pokedex) {
+            if (pokemones != null) {
+                Pokemon pokemon = (Pokemon) pokemones;
+                System.out.println(pokemon.informacion());
+                hayPokemones = true;
+            }
+        }
+
+        if (!hayPokemones) {
+            System.out.println("No hay pokémones agregados!!");
+        }
+    }
 
 	public void mostrarMasFOD() {
-		if(!llenoPokemon()) {
-			System.out.println("Se encuentra vacio la pokedex");
-			return;
+		 int totalPokemones = 0;
+		    int indiceFuerte = -1;
+		    int indiceDebil = -1;
+		    int maxAtaque = Integer.MIN_VALUE;
+		    int minAtaque = Integer.MAX_VALUE;
+
+		    for (int i = 0; i < pokedex.length; i++) {
+		        if (pokedex[i] != null) {
+		            totalPokemones++;
+		            Pokemon pokemon = (Pokemon) pokedex[i];
+		            int ataque = pokemon.getAtaque();
+
+		            if (ataque > maxAtaque) {
+		                maxAtaque = ataque;
+		                indiceFuerte = i;
+		            }
+
+		            if (ataque < minAtaque) {
+		                minAtaque = ataque;
+		                indiceDebil = i;
+		            }
+		        }
+		    }
+
+		    if (totalPokemones == 0) {
+		        System.out.println("La Pokédex está vacía.");
+		        return;
+		    }
+
+		    System.out.println("==========================================================");
+		    if (totalPokemones == 1) {
+		        System.out.println("Solo hay un Pokémon en la Pokédex.");
+		        Pokemon unicoPokemon = (Pokemon) pokedex[indiceFuerte];
+		        System.out.println(unicoPokemon.informacion());
+		    } 
+		    else {
+		        System.out.println("El más fuerte es: ");
+		        System.out.println(((Pokemon) pokedex[indiceFuerte]).informacion());
+		        System.out.println("==========================================================");
+		        System.out.println("El más débil es: ");
+		        System.out.println(((Pokemon) pokedex[indiceDebil]).informacion());
+		    }
+		    System.out.println("==========================================================");
 		}
-
-		int indiceFuerte = 0;
-		int indiceDebil = 0;
-		int maxAtaque = 0;
-		int minAtaque = 0;
-
-		for (int i = 0; i < pokedex.length; i++) {
-			Pokemon pokemon = (Pokemon) pokedex[i];
-			int ataque = pokemon.getAtaque();
-
-			if (ataque > maxAtaque) {
-				indiceFuerte = i;
-				maxAtaque = ataque;
-			}
-
-			if (ataque < minAtaque) {
-				minAtaque = ataque;
-				indiceDebil = i;
-			}
-		}
-
-		if (indiceFuerte != 0 || indiceDebil != 0) {
-			Pokemon pokemonFt = (Pokemon) pokedex[indiceFuerte];
-			Pokemon pokemonDb = (Pokemon) pokedex[indiceDebil];
-			System.out.println("============================================");
-			System.out.println("El mas fuerte es: ");
-			System.out.println(pokemonFt.informacion());
-			System.out.println("============================================");
-			System.out.println("El mas debil es: ");
-			System.out.println(pokemonDb.informacion());
-			System.out.println("============================================");
-
-		}
-	}
-
+	
 	public void registrarPokemon(Pokemon pokemon) {
 		
 		for (int i = 0; i < pokedex.length; i++) {
@@ -83,4 +92,5 @@ public class Pokedex {
 		}
 		return contarEspacios==pokedex.length;
 	}
+	
 }

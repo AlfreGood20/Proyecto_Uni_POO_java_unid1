@@ -7,22 +7,13 @@ public class Agua extends Pokemon{
 		super(nombre, categoria, altura, peso, habilidad, exp, nivel);
 	}
 
-	@Override
-	public void subirNivel() {
-		
-	}
-
-	@Override
-	public void habilidadEspecial() {
-		
-	}
 
 	@Override
 	public String informacion() {
-		return null;
+		return "Agua [Nombre: " + getNombre() + ", Categoria: " + getCategoria() + ", Hp: " + getHp()
+		+ ", Nivel:" + getNivel() + ", Exp:" + getExp() + ", Ataque: " + getAtaque()
+		+ ", Defensa:" + getDefensa() + ", Altura:" + getAltura() + ", Peso:" + getPeso()
+		+ ", Habilidad:" + getHabilidad() + "]";
 	}
-
-
-	
 	
 }

@@ -52,10 +52,6 @@ public abstract class Pokemon {
 		return (int) (1.5 * nivel);
 	}
 
-	public abstract void subirNivel();
-
-	public abstract void habilidadEspecial();
-
 	public abstract String informacion();
 
 	public String getNombre() {
